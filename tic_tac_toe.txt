@@ -1,0 +1,116 @@
+
+import kotlin.math.abs
+
+fun main() {
+
+    println("---------")
+    println()
+    println("| _ _ _ |")
+    println("| _ _ _ |")
+    println("| _ _ _ |")
+    println()
+    print("---------")
+    
+
+    val string: String = "_________"
+    val list = mutableListOf(
+    mutableListOf<Char>(string[0], string[1], string[2]),
+    mutableListOf<Char>(string[3], string[4], string[5]),
+    mutableListOf<Char>(string[6], string[7], string[8])
+)
+    //---------------------------------------------------------------------------------
+    var countX = 0
+    var countO = 0
+    var countWs = 9
+    
+    var xWin = 0
+    var oWin = 0
+    
+    var countD = 0
+    //---------------------------------------------------------------------------------
+    println()
+    loop@ while(true) {
+        val string1 = readln().split(" ").toMutableList()
+         val s0: Int = string1[0].toInt()
+         val s1: Int = string1[1].toInt()
+         
+         val ch0 = string1[0]
+         val ch1 = string1[1]
+         
+        //  val ch0: Char = string1[0].toChar()
+        //  val ch1: Char = string1[1].toChar()
+        
+        if(ch0[0].isDigit() && ch1[0].isDigit()) {
+            if((s0 > 0 && s0 < 4) && (s1 > 0 && s1 < 4)) {
+                
+                if(list[s0-1][s1-1] == '_') {
+                    if(countD == 0) {
+                        list[s0-1][s1-1] = 'X'
+                        countD = 1
+                        countX++
+                    } else {
+                        list[s0-1][s1-1] = 'O'
+                        countD = 0
+                        countO++
+                    }
+                    countWs--
+                    
+                        println("---------")
+                        println()
+                        println("| ${list[0][0]} ${list[0][1]} ${list[0][2]} |")
+                        println("| ${list[1][0]} ${list[1][1]} ${list[1][2]} |")
+                        println("| ${list[2][0]} ${list[2][1]} ${list[2][2]} |")
+                        println()
+                        print("---------")
+
+    if((list[0][0] == 'X' && list[0][1] == 'X' && list[0][2] == 'X') || (list[1][0] == 'X' && list[1][1] == 'X' && list[1][2] == 'X') || (list[2][0] == 'X' && list[2][1] == 'X' && list[2][2] == 'X') || (list[0][0] == 'X' && list[1][0] == 'X' && list[2][0] == 'X') || (list[0][1]== 'X' && list[1][1] == 'X' && list[2][1] == 'X') || (list[0][2] == 'X' && list[1][2]== 'X' && list[2][2] == 'X') || (list[0][0] == 'X' && list[1][1] == 'X' && list[2][2] == 'X') || (list[0][2] == 'X' && list[1][1] == 'X' && list[2][0] == 'X')) {
+        xWin++
+        
+    }
+        if((list[0][0] == 'O' && list[0][1] == 'O' && list[0][2] == 'O') || (list[1][0] == 'O' && list[1][1] == 'O' && list[1][2] == 'O') || (list[2][0] == 'O' && list[2][1] == 'O' && list[2][2] == 'O') || (list[0][0] == 'O' && list[1][0] == 'O' && list[2][0] == 'O') || (list[0][1]== 'O' && list[1][1] == 'O' && list[2][1] == 'O') || (list[0][2] == 'O' && list[1][2]== 'O' && list[2][2] == 'O') || (list[0][0] == 'O' && list[1][1] == 'O' && list[2][2] == 'O') || (list[0][2] == 'O' && list[1][1] == 'O' && list[2][0] == 'O')) {
+        oWin++
+        
+    }
+    println()
+    if ((abs(countX - countO) > 1000)) {              //(xWin > 0 && oWin > 0) || (abs(countX - countO) > 4)
+        println("Impossible")
+        break@loop
+    } 
+    else if (xWin > 0) {
+        println("X wins")
+        break@loop
+    } else if (oWin > 0) {
+        println("O wins")
+        break@loop
+    } else if (xWin == 0 && oWin == 0 && countWs == 0) {
+        println("Draw")
+        break@loop
+    }
+
+                    
+                    
+                    
+                } else {
+                    
+                    println("This cell is occupied! Choose another one!")
+                    
+                }
+                
+            } else {
+                
+                println("Coordinates should be from 1 to 3!")
+                
+            }
+            
+            
+        } else {
+            println("You should enter numbers!")
+            
+        }
+        
+        
+    }
+    
+
+
+}
